@@ -644,6 +644,7 @@ const PlacesScreen = () => {
   console.log(route.params);
 
   return (
+    //
     <View>
       <Pressable
         style={{
@@ -687,7 +688,7 @@ const PlacesScreen = () => {
         </Pressable>
       </Pressable>
 
-      <ScrollView style={{ backgroundColor: "#f5f5f5" }}>
+      <ScrollView style={{ backgroundColor: "#F5F5F5" }}>
         {sortedData
           ?.filter((item) => item.place === route.params.place)
           .map((item) =>

@@ -267,7 +267,7 @@ const HomeScreen = () => {
                 width: 200,
                 height: 150,
                 marginTop: 10,
-                borderColor: "#E0E0E0",
+                borderColor: "royalblue",
                 borderWidth: 2,
                 borderRadius: 10,
                 padding: 20,
@@ -773,12 +773,12 @@ const HomeScreen = () => {
               alignItems: "center",
             }}
           >
-            <Image
+            {/* <Image
               style={{ width: 200, height: 50, resizeMode: "cover" }}
               source={{
                 uri: "https://assets.stickpng.com/thumbs/5a32a821cb9a85480a628f8f.png",
               }}
-            />
+            /> */}
           </Pressable>
         </ScrollView>
       </ScrollView>

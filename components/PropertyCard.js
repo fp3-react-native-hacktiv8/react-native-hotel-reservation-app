@@ -1,6 +1,12 @@
-import { StyleSheet, View, Text, Image, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  Dimensions,
+  Pressable,
+} from "react-native";
 import React from "react";
-import { Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -61,11 +67,11 @@ const PropertyCard = ({
               marginTop: 7,
             }}
           >
-            <MaterialIcons name="stars" size={24} color="black" />
+            <MaterialIcons name="stars" size={24} color="gold" />
             <Text>{property.rating}</Text>
             <View
               style={{
-                backgroundColor: "#6CB4EE",
+                backgroundColor: "royalblue",
                 paddingVertical: 3,
                 borderRadius: 5,
                 width: 100,
@@ -126,7 +132,7 @@ const PropertyCard = ({
 
           <View
             style={{
-              backgroundColor: "#6082b6",
+              backgroundColor: "green",
               paddingVertical: 2,
               marginTop: 2,
               borderRadius: 5,
