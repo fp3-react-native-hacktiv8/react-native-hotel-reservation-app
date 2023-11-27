@@ -11,7 +11,8 @@ import React, { useLayoutEffect } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { pixelNormalize } from "../components/Normalise";
 import { MaterialIcons } from "@expo/vector-icons";
-// import Icon from "react-native-vector-icons/MaterialIcons";
+import Amenities from "../components/Amenities";
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 const PropertyInfoScreen = () => {
   const route = useRoute();
@@ -36,277 +37,334 @@ const PropertyInfoScreen = () => {
   const difference = route.params.oldPrice - route.params.newPrice;
   const offerPrice = (Math.abs(difference) / route.params.oldPrice) * 100;
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <Pressable
-          style={{ flexDirection: "row", flexWrap: "wrap", margin: 10 }}
-        >
-          {route.params.photos.slice(0, 5).map((photo, index) => (
-            <View key={index} style={{ margin: 6 }}>
-              <Image
-                style={{
-                  //   For Os/Ios //
-                  //   width: 120,
-                  //   height: pixelNormalize(80),
-                  //   borderRadius: pixelNormalize(4),
-                  width: 118,
-                  height: 80,
-                  borderRadius: 4,
-                }}
-                source={{ uri: photo.image }}
-              />
-            </View>
-          ))}
-          <Pressable style={{ alignItems: "center", justifyContent: "center" }}>
-            <Text style={{ textAlign: "center", marginLeft: 20 }}>
-              Show More
-            </Text>
-          </Pressable>
-        </Pressable>
-
-        <View
-          style={{
-            marginHorizontal: 12,
-            marginTop: 10,
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        >
-          <View>
-            <Text style={{ fontSize: 25, fontWeight: "bold" }}>
-              {route.params.name}
-            </Text>
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                gap: 6,
-                marginTop: 7,
-              }}
-            >
-              <MaterialIcons name="stars" size={24} color="green" />
-              <Text>{route.params.rating}</Text>
-              <View
-                style={{
-                  backgroundColor: "royalblue",
-                  paddingVertical: 3,
-                  borderRadius: 5,
-                  width: 100,
-                }}
-              >
-                <Text
-                  style={{ textAlign: "center", color: "white", fontSize: 15 }}
-                >
-                  Genius Level
-                </Text>
+    <>
+      <SafeAreaView>
+        <ScrollView>
+          <Pressable
+            style={{ flexDirection: "row", flexWrap: "wrap", margin: 10 }}
+          >
+            {route.params.photos.slice(0, 5).map((photo, index) => (
+              <View key={index} style={{ margin: 6 }}>
+                <Image
+                  style={{
+                    //   For Os/Ios //
+                    //   width: 120,
+                    //   height: pixelNormalize(80),
+                    //   borderRadius: pixelNormalize(4),
+                    width: 118,
+                    height: 80,
+                    borderRadius: 4,
+                  }}
+                  source={{ uri: photo.image }}
+                />
               </View>
-            </View>
-          </View>
+            ))}
+            <Pressable
+              style={{ alignItems: "center", justifyContent: "center" }}
+            >
+              <Text style={{ textAlign: "center", marginLeft: 20 }}>
+                Show More
+              </Text>
+            </Pressable>
+          </Pressable>
 
           <View
             style={{
-              backgroundColor: "#17B169",
-              paddingHorizontal: 6,
-              paddingVertical: 4,
-              borderRadius: 6,
+              marginHorizontal: 12,
+              marginTop: 10,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
             }}
           >
-            <Text style={{ color: "white", fontSize: 13 }}>
-              Travel sustainable
-            </Text>
-          </View>
-        </View>
+            <View>
+              <Text style={{ fontSize: 25, fontWeight: "bold" }}>
+                {route.params.name}
+              </Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: 6,
+                  marginTop: 7,
+                }}
+              >
+                <MaterialIcons name="stars" size={24} color="gold" />
+                <Text>{route.params.rating}</Text>
+                <View
+                  style={{
+                    backgroundColor: "royalblue",
+                    paddingVertical: 3,
+                    borderRadius: 5,
+                    width: 100,
+                  }}
+                >
+                  <Text
+                    style={{
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 15,
+                    }}
+                  >
+                    Genius Level
+                  </Text>
+                </View>
+              </View>
+            </View>
 
-        <Text
-          style={{
-            borderColor: "#E0E0E0",
-            borderWidth: 3,
-            height: 1,
-            marginTop: 15,
-          }}
-        />
-        <Text
-          style={{
-            marginTop: 10,
-            fontSize: 17,
-            fontWeight: "500",
-            marginHorizontal: 12,
-          }}
-        >
-          Price for 1 Night and {route.params.adults} adults
-        </Text>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginHorizontal: 12,
-            marginTop: 4,
-            gap: 8,
-          }}
-        >
-          <Text
-            style={{
-              color: "red",
-              fontSize: 20,
-              textDecorationLine: "line-through",
-            }}
-          >
-            {route.params.oldPrice * route.params.adults}
-          </Text>
-          <Text style={{ fontSize: 20 }}>
-            Rp {route.params.newPrice * route.params.adults}
-          </Text>
-        </View>
-        <View
-          style={{
-            marginHorizontal: 12,
-            marginTop: 7,
-            backgroundColor: "green",
-            paddingHorizontal: 4,
-            paddingVertical: 5,
-            width: 78,
-            borderRadius: 4,
-          }}
-        >
-          <Text style={{ textAlign: "center", color: "white" }}>
-            {offerPrice.toFixed(0)} % OFF
-          </Text>
-        </View>
-
-        <Text
-          style={{
-            borderColor: "#E0E0E0",
-            borderWidth: 3,
-            height: 1,
-            marginTop: 15,
-          }}
-        />
-        <View
-          style={{
-            margin: 12,
-            flexDirection: "row",
-            alignItems: "center",
-            gap: 60,
-          }}
-        >
-          <View>
-            <Text style={{ fontSize: 16, fontWeight: "600", marginBottom: 3 }}>
-              Check In
-            </Text>
-            <Text
-              style={{ fontSize: 16, fontWeight: "bold", color: "royalblue" }}
+            <View
+              style={{
+                backgroundColor: "#17B169",
+                paddingHorizontal: 6,
+                paddingVertical: 4,
+                borderRadius: 6,
+              }}
             >
-              {route.params.selectedDates.startDate}
-            </Text>
+              <Text style={{ color: "white", fontSize: 13 }}>
+                Travel sustainable
+              </Text>
+            </View>
           </View>
 
-          <View>
-            <Text style={{ fontSize: 16, fontWeight: "600", marginBottom: 3 }}>
-              Check Out
-            </Text>
-            <Text
-              style={{ fontSize: 16, fontWeight: "bold", color: "royalblue" }}
-            >
-              {route.params.selectedDates.endDate}
-            </Text>
-          </View>
-        </View>
-        <View style={{ margin: 12 }}>
-          <Text style={{ fontSize: 16, fontWeight: "600", marginBottom: 3 }}>
-            Rooms and Guest
-          </Text>
-          <Text
-            style={{ fontSize: 16, fontWeight: "bold", color: "royalblue" }}
-          >
-            {route.params.rooms} rooms {route.params.adults} adults{" "}
-            {route.params.children} children
-          </Text>
-        </View>
-
-        <Text
-          style={{
-            borderColor: "#E0E0E0",
-            borderWidth: 3,
-            height: 1,
-            marginTop: 15,
-          }}
-        />
-
-        {/* <View>
+          {/* //icon// */}
           <View style={styles.container}>
             <View style={styles.wrapper}>
               <View style={styles.wrapperLabel}>
                 <Icon
                   name="apartment"
-                  size={50}
+                  size={40}
                   color="royalblue"
                   style={styles.icon}
                 />
-                <Text style={styles.label}>apartment</Text>
+                <Text style={styles.label}>Apartment</Text>
               </View>
 
               <View style={styles.wrapperLabel}>
                 <Icon
-                  name="kitchen"
-                  size={50}
+                  name="restaurant"
+                  size={40}
                   color="royalblue"
                   style={styles.icon}
                 />
-                <Text style={styles.label}>apartment</Text>
+                <Text style={styles.label}>Restaurant</Text>
               </View>
 
               <View style={styles.wrapperLabel}>
                 <Icon
-                  name="hotel"
-                  size={50}
+                  name="pool"
+                  size={40}
                   color="royalblue"
                   style={styles.icon}
                 />
-                <Text style={styles.label}>apartment</Text>
+                <Text style={styles.label}>Swimming Pool</Text>
               </View>
 
               <View style={styles.wrapperLabel}>
                 <Icon
                   name="wifi"
-                  size={50}
+                  size={40}
                   color="royalblue"
                   style={styles.icon}
                 />
-                <Text style={styles.label}>apartment</Text>
+                <Text style={styles.label}>WiFi</Text>
               </View>
             </View>
           </View>
-        </View> */}
-      </ScrollView>
-    </SafeAreaView>
+
+          <Text
+            style={{
+              borderColor: "#E0E0E0",
+              borderWidth: 3,
+              height: 1,
+              marginTop: 15,
+            }}
+          />
+          <Text
+            style={{
+              marginTop: 10,
+              fontSize: 17,
+              fontWeight: "500",
+              marginHorizontal: 12,
+            }}
+          >
+            Price for 1 Night and {route.params.adults} adults
+          </Text>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginHorizontal: 12,
+              marginTop: 4,
+              gap: 8,
+            }}
+          >
+            <Text
+              style={{
+                color: "red",
+                fontSize: 20,
+                textDecorationLine: "line-through",
+              }}
+            >
+              {route.params.oldPrice * route.params.adults}
+            </Text>
+            <Text style={{ fontSize: 20 }}>
+              Rp {route.params.newPrice * route.params.adults}
+            </Text>
+          </View>
+          <View
+            style={{
+              marginHorizontal: 12,
+              marginTop: 7,
+              backgroundColor: "green",
+              paddingHorizontal: 4,
+              paddingVertical: 5,
+              width: 78,
+              borderRadius: 4,
+            }}
+          >
+            <Text style={{ textAlign: "center", color: "white" }}>
+              {offerPrice.toFixed(0)} % OFF
+            </Text>
+          </View>
+
+          <Text
+            style={{
+              borderColor: "#E0E0E0",
+              borderWidth: 3,
+              height: 1,
+              marginTop: 15,
+            }}
+          />
+          <View
+            style={{
+              margin: 12,
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 60,
+            }}
+          >
+            <View>
+              <Text
+                style={{ fontSize: 16, fontWeight: "600", marginBottom: 3 }}
+              >
+                Check In
+              </Text>
+              <Text
+                style={{ fontSize: 16, fontWeight: "bold", color: "royalblue" }}
+              >
+                {route.params.selectedDates.startDate}
+              </Text>
+            </View>
+
+            <View>
+              <Text
+                style={{ fontSize: 16, fontWeight: "600", marginBottom: 3 }}
+              >
+                Check Out
+              </Text>
+              <Text
+                style={{ fontSize: 16, fontWeight: "bold", color: "royalblue" }}
+              >
+                {route.params.selectedDates.endDate}
+              </Text>
+            </View>
+          </View>
+          <View style={{ margin: 12 }}>
+            <Text style={{ fontSize: 16, fontWeight: "600", marginBottom: 3 }}>
+              Rooms and Guest
+            </Text>
+            <Text
+              style={{ fontSize: 16, fontWeight: "bold", color: "royalblue" }}
+            >
+              {route.params.rooms} rooms {route.params.adults} adults{" "}
+              {route.params.children} children
+            </Text>
+          </View>
+
+          <Text
+            style={{
+              borderColor: "#E0E0E0",
+              borderWidth: 3,
+              height: 1,
+              marginTop: 15,
+            }}
+          />
+          <Amenities />
+
+          <Text
+            style={{
+              borderColor: "#E0E0E0",
+              borderWidth: 3,
+              height: 1,
+              marginTop: 15,
+            }}
+          />
+        </ScrollView>
+      </SafeAreaView>
+
+      <Pressable
+        onPress={() =>
+          navigation.navigate("Rooms", {
+            rooms: route.params.availableRooms,
+            oldPrice: route.params.oldPrice,
+            newPrice: route.params.newPrice,
+            name: route.params.name,
+            children: route.params.children,
+            adults: route.params.adults,
+            rating: route.params.rating,
+            startDate: route.params.selectedDates.startDate,
+            endDate: route.params.selectedDates.endDate,
+          })
+        }
+        style={{
+          backgroundColor: "#6CB4EE",
+          position: "absolute",
+          bottom: 20,
+          padding: 15,
+          width: "95%",
+          marginHorizontal: 10,
+        }}
+      >
+        <Text
+          style={{
+            textAlign: "center",
+            color: "white",
+            fontWeight: "bold",
+            fontSize: 17,
+          }}
+        >
+          Select Availabilty
+        </Text>
+      </Pressable>
+    </>
   );
 };
 
 export default PropertyInfoScreen;
 
 const styles = StyleSheet.create({
-  //   container: {
-  //     paddingHorizontal: 20,
-  //   },
-  //   wrapper: {
-  //     flex: 1,
-  //     flexDirection: "row",
-  //     justifyContent: "space-between",
-  //   },
-  //   wrapperLabel: {
-  //     justifyContent: "center",
-  //     alignItems: "center",
-  //   },
-  //   label: {
-  //     justifyContent: "center",
-  //     alignItems: "center",
-  //     fontSize: 14,
-  //     color: "gray",
-  //     marginTop: 3,
-  //   },
-  //   icon: {
-  //     justifyContent: "center",
-  //     alignItems: "center",
-  //   },
+  container: {
+    paddingHorizontal: 20,
+    marginTop: 20,
+  },
+  wrapper: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  wrapperLabel: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  label: {
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: 14,
+    color: "gray",
+    marginTop: 3,
+  },
+  icon: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
