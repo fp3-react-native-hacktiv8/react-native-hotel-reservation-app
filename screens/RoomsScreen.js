@@ -27,60 +27,60 @@ const RoomsScreen = () => {
       },
     });
   }, []);
-  const [selected,setSelected] = useState([]);
+  const [selected, setSelected] = useState([]);
   return (
     <>
-    <ScrollView>
-      {route.params.rooms.map((item, index) => (
-        <Pressable
-          style={{ margin: 10, backgroundColor: "white", padding: 10 }}
-          key={index}
-        >
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
+      <ScrollView>
+        {route.params.rooms.map((item, index) => (
+          <Pressable
+            style={{ margin: 10, backgroundColor: "white", padding: 10 }}
+            key={index}
           >
-            <Text
-              style={{ color: "royalblue", fontSize: 17, fontWeight: "500" }}
-            >
-              {item.name}
-            </Text>
-            <AntDesign name="infocirlceo" size={24} color="royalblue" />
-          </View>
-          <Text style={{ marginTop: 3, fontSize: 16 }}>
-            pay at the property
-          </Text>
-          <Text style={{ marginTop: 3, color: "green", fontSize: 16 }}>
-            Free cancellation Available
-          </Text>
-          <View
-            style={{
-              marginTop: 3,
-              flexDirection: "row",
-              alignItems: "center",
-              gap: 10,
-            }}
-          >
-            <Text
+            <View
               style={{
-                fontSize: 18,
-                color: "red",
-                textDecorationLine: "line-through",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
               }}
             >
-              {route.params.oldPrice}
+              <Text
+                style={{ color: "royalblue", fontSize: 17, fontWeight: "500" }}
+              >
+                {item.name}
+              </Text>
+              <AntDesign name="infocirlceo" size={24} color="royalblue" />
+            </View>
+            <Text style={{ marginTop: 3, fontSize: 16 }}>
+              pay at the property
             </Text>
-            <Text style={{ fontSize: 18 }}>Rp {route.params.newPrice}</Text>
-          </View>
-          <Amenities />
+            <Text style={{ marginTop: 3, color: "green", fontSize: 16 }}>
+              Free cancellation Available
+            </Text>
+            <View
+              style={{
+                marginTop: 3,
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 10,
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 18,
+                  color: "red",
+                  textDecorationLine: "line-through",
+                }}
+              >
+                {route.params.oldPrice}
+              </Text>
+              <Text style={{ fontSize: 18 }}>Rp {route.params.newPrice}</Text>
+            </View>
+            <Amenities />
 
-          {selected.includes(item.name) ? (
+            {selected.includes(item.name) ? (
               <Pressable
                 style={{
-                  borderColor: "#318CE7",
+                  borderColor: "royalblue",
                   backgroundColor: "#F0F8FF",
                   borderWidth: 2,
                   width: "100%",
@@ -95,7 +95,7 @@ const RoomsScreen = () => {
                     textAlign: "center",
                     marginLeft: "auto",
                     marginRight: "auto",
-                    color: "#318CE7",
+                    color: "royalblue",
                     fontWeight: "bold",
                     fontSize: 16,
                   }}
@@ -110,32 +110,33 @@ const RoomsScreen = () => {
                 />
               </Pressable>
             ) : (
-          <Pressable onPress={() => setSelected(item.name)}
-            style={{
-              borderColor: "royalblue",
-              borderWidth: 2,
-              borderRadius: 5,
-              padding: 10,
-            }}
-          >
-            <Text
-              style={{
-                textAlign: "center",
-                fontSize: 16,
-                fontWeight: "700",
-                color: "royalblue",
-              }}
-            >
-              SELECT
-            </Text>
-          </Pressable>
+              <Pressable
+                onPress={() => setSelected(item.name)}
+                style={{
+                  borderColor: "royalblue",
+                  borderWidth: 2,
+                  borderRadius: 5,
+                  padding: 10,
+                }}
+              >
+                <Text
+                  style={{
+                    textAlign: "center",
+                    fontSize: 16,
+                    fontWeight: "700",
+                    color: "royalblue",
+                  }}
+                >
+                  SELECT
+                </Text>
+              </Pressable>
             )}
-        </Pressable>
-      ))}
-    </ScrollView>
+          </Pressable>
+        ))}
+      </ScrollView>
 
-    {selected.length > 0 ? (
-      <Pressable
+      {selected.length > 0 ? (
+        <Pressable
           onPress={() =>
             navigation.navigate("User", {
               oldPrice: route.params.oldPrice,
@@ -162,11 +163,7 @@ const RoomsScreen = () => {
             Reserve
           </Text>
         </Pressable>
-    ) : (
-      null
-    )}
-
-
+      ) : null}
     </>
   );
 };

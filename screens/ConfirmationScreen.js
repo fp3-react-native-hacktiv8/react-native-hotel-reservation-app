@@ -18,7 +18,7 @@ const ConfirmationScreen = () => {
         color: "white",
       },
       headerStyle: {
-        backgroundColor: "#003580",
+        backgroundColor: "royalblue",
         height: 110,
         borderBottomColor: "transparent",
         shadowColor: "transparent",
@@ -29,7 +29,7 @@ const ConfirmationScreen = () => {
   const confirmBooking = async () => {
     dispatch(savedPlaces(route.params));
     navigation.navigate("Main");
-  }
+  };
   return (
     <View>
       <Pressable style={{ backgroundColor: "white", margin: 10 }}>
@@ -54,11 +54,11 @@ const ConfirmationScreen = () => {
                 marginTop: 7,
               }}
             >
-              <MaterialIcons name="stars" size={24} color="green" />
+              <MaterialIcons name="stars" size={24} color="gold" />
               <Text>{route.params.rating}</Text>
               <View
                 style={{
-                  backgroundColor: "#003580",
+                  backgroundColor: "royalblue",
                   paddingVertical: 3,
                   borderRadius: 5,
                   width: 100,
@@ -132,17 +132,26 @@ const ConfirmationScreen = () => {
         </View>
 
         <Pressable
-        onPress={confirmBooking}
+          onPress={confirmBooking}
           style={{
-            backgroundColor: "#003580",
+            backgroundColor: "#007FFF",
             width: 120,
             padding: 5,
             marginHorizontal: 12,
             marginBottom: 20,
-            borderRadius:4
+            borderRadius: 4,
           }}
         >
-          <Text style={{textAlign:"center",color:"white",fontSize:15,fontWeight:"bold"}}>Book Now</Text>
+          <Text
+            style={{
+              textAlign: "center",
+              color: "white",
+              fontSize: 15,
+              fontWeight: "bold",
+            }}
+          >
+            Book Now
+          </Text>
         </Pressable>
       </Pressable>
     </View>
