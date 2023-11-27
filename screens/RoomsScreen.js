@@ -1,9 +1,9 @@
 import { StyleSheet, View, Text } from "react-native";
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { ScrollView } from "react-native";
 import { Pressable } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, Entypo } from "@expo/vector-icons";
 import Amenities from "../components/Amenities";
 
 const RoomsScreen = () => {
@@ -27,7 +27,9 @@ const RoomsScreen = () => {
       },
     });
   }, []);
+  const [selected,setSelected] = useState([]);
   return (
+    <>
     <ScrollView>
       {route.params.rooms.map((item, index) => (
         <Pressable
@@ -75,7 +77,40 @@ const RoomsScreen = () => {
           </View>
           <Amenities />
 
-          <Pressable
+          {selected.includes(item.name) ? (
+              <Pressable
+                style={{
+                  borderColor: "#318CE7",
+                  backgroundColor: "#F0F8FF",
+                  borderWidth: 2,
+                  width: "100%",
+                  padding: 10,
+                  borderRadius: 5,
+                  flexDirection: "row",
+                  alignItems: "center",
+                }}
+              >
+                <Text
+                  style={{
+                    textAlign: "center",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    color: "#318CE7",
+                    fontWeight: "bold",
+                    fontSize: 16,
+                  }}
+                >
+                  SELECTED
+                </Text>
+                <Entypo
+                  onPress={() => setSelected([])}
+                  name="circle-with-cross"
+                  size={24}
+                  color="red"
+                />
+              </Pressable>
+            ) : (
+          <Pressable onPress={() => setSelected(item.name)}
             style={{
               borderColor: "royalblue",
               borderWidth: 2,
@@ -94,9 +129,45 @@ const RoomsScreen = () => {
               SELECT
             </Text>
           </Pressable>
+            )}
         </Pressable>
       ))}
     </ScrollView>
+
+    {selected.length > 0 ? (
+      <Pressable
+          onPress={() =>
+            navigation.navigate("User", {
+              oldPrice: route.params.oldPrice,
+              newPrice: route.params.newPrice,
+              name: route.params.name,
+              children: route.params.children,
+              adults: route.params.adults,
+              rating: route.params.rating,
+              startDate: route.params.startDate,
+              endDate: route.params.endDate,
+            })
+          }
+          style={{
+            backgroundColor: "#007FFF",
+            padding: 8,
+            marginBottom: 30,
+            borderRadius: 3,
+            marginHorizontal: 15,
+          }}
+        >
+          <Text
+            style={{ textAlign: "center", color: "white", fontWeight: "bold" }}
+          >
+            Reserve
+          </Text>
+        </Pressable>
+    ) : (
+      null
+    )}
+
+
+    </>
   );
 };
 
