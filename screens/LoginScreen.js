@@ -7,13 +7,38 @@ import {
   TextInput,
   Pressable,
 } from "react-native";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
+import { auth } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation("");
+
+  const login = () => {
+    signInWithEmailAndPassword(auth,email,password).then((userCredential) => {
+       console.log("user credential", userCredential);
+       const user = userCredential.user;
+       console.log("user details", user);
+    })
+}
+
+useEffect(() => {
+  try {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        navigation.replace("Main");
+      }
+    });
+
+    return unsubscribe;
+  } catch (e) {
+    console.log(e);
+  }
+}, []);
+
 
   return (
     <SafeAreaView
@@ -85,6 +110,7 @@ const LoginScreen = () => {
         </View>
 
         <Pressable
+        onPress={login}
           style={{
             width: 200,
             backgroundColor: "royalblue",

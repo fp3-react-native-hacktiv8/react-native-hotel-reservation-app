@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text, Pressable, ScrollView } from "react-native";
-import React, { useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState, useEffect } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Octicons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
@@ -14,6 +14,8 @@ import {
   ModalTitle,
   SlideAnimation,
 } from "react-native-modals";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 
 const PlacesScreen = () => {
   const route = useRoute();
@@ -601,6 +603,23 @@ const PlacesScreen = () => {
       filter: "cost:High to Low",
     },
   ];
+  const [loading,setLoading] = useState(false);
+  const [items,setItems] = useState([]);
+  useEffect(() => {
+    if (items.length > 0) return;
+
+    setLoading(true);
+
+    const fetchProducts = async () => {
+      const colRef = collection(db,"places");
+      const docsSnap = await getDocs(colRef);
+      docsSnap.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setLoading(false);
+    };
+    fetchProducts();
+  }, [items]);
   const searchPlaces = data?.filter(
     (item) => item.place === route.params.place
   );

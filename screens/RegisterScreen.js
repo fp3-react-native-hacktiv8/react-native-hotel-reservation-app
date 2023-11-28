@@ -10,6 +10,10 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
+import {createUserWithEmailAndPassword} from "firebase/auth";
+import { auth,db } from "../firebase";
+import { setDoc,doc } from 'firebase/firestore';
+
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState("");
@@ -32,6 +36,15 @@ const RegisterScreen = () => {
         { cancelable: false }
       );
     }
+    createUserWithEmailAndPassword(auth,email,password).then((userCredentials) => {
+        const user = userCredentials._tokenResponse.email;
+        const uid = auth.currentUser.uid;
+
+        setDoc(doc(db,"users",`${uid}`),{
+          email:user,
+          phone:phone
+        })
+    })
   };
   return (
     <SafeAreaView
