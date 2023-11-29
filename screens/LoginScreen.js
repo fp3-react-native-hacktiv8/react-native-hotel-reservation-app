@@ -6,6 +6,7 @@ import {
   KeyboardAvoidingView,
   TextInput,
   Pressable,
+  Alert,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -18,27 +19,54 @@ const LoginScreen = () => {
   const navigation = useNavigation("");
 
   const login = () => {
-    signInWithEmailAndPassword(auth,email,password).then((userCredential) => {
-       console.log("user credential", userCredential);
-       const user = userCredential.user;
-       console.log("user details", user);
-    })
-}
+    if (email === "" || password === "") {
+      Alert.alert(
+        "Invalid Detials",
+        "Invalid email or password. Please check and try again.",
+        [
+          {
+            text: "Cancel",
+            onPress: () => console.log("Cancel Pressed"),
+            style: "cancel",
+          },
+          { text: "OK", onPress: () => console.log("OK Pressed") },
+        ],
+        { cancelable: false }
+      );
+    }
 
-useEffect(() => {
-  try {
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
-      if (authUser) {
-        navigation.replace("Main");
-      }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      Alert.alert("Invalid Email", "Please enter a valid email address.");
+      return;
+    }
+
+    if (password.length < 6) {
+      Alert.alert(
+        "Invalid Password",
+        "Password must be at least 6 characters long."
+      );
+      return;
+    }
+    signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+      console.log("user credential", userCredential);
+      const user = userCredential.user;
+      console.log("user details", user);
     });
+  };
 
-    return unsubscribe;
-  } catch (e) {
-    console.log(e);
-  }
-}, []);
+  useEffect(() => {
+    try {
+      const unsubscribe = auth.onAuthStateChanged((authUser) => {
+        if (authUser) {
+          navigation.replace("Main");
+        }
+      });
 
+      return unsubscribe;
+    } catch (e) {
+      console.log(e);
+    }
+  }, []);
 
   return (
     <SafeAreaView
@@ -110,7 +138,7 @@ useEffect(() => {
         </View>
 
         <Pressable
-        onPress={login}
+          onPress={login}
           style={{
             width: 200,
             backgroundColor: "royalblue",

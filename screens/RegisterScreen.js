@@ -10,10 +10,9 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import {createUserWithEmailAndPassword} from "firebase/auth";
-import { auth,db } from "../firebase";
-import { setDoc,doc } from 'firebase/firestore';
-
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../firebase";
+import { setDoc, doc } from "firebase/firestore";
 
 const RegisterScreen = () => {
   const [email, setEmail] = useState("");
@@ -36,15 +35,40 @@ const RegisterScreen = () => {
         { cancelable: false }
       );
     }
-    createUserWithEmailAndPassword(auth,email,password).then((userCredentials) => {
+    // Validasi format email
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      Alert.alert("Invalid Email", "Please enter a valid email address.");
+      return;
+    }
+
+    // Validasi panjang password
+    if (password.length < 6) {
+      Alert.alert(
+        "Invalid Password",
+        "Password must be at least 6 characters long."
+      );
+      return;
+    }
+
+    // Validasi nomor telepon
+    if (!/^\d+$/.test(phone)) {
+      Alert.alert(
+        "Invalid Phone Number",
+        "Phone number must contain only digits."
+      );
+      return;
+    }
+    createUserWithEmailAndPassword(auth, email, password).then(
+      (userCredentials) => {
         const user = userCredentials._tokenResponse.email;
         const uid = auth.currentUser.uid;
 
-        setDoc(doc(db,"users",`${uid}`),{
-          email:user,
-          phone:phone
-        })
-    })
+        setDoc(doc(db, "users", `${uid}`), {
+          email: user,
+          phone: phone,
+        });
+      }
+    );
   };
   return (
     <SafeAreaView

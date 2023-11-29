@@ -25,7 +25,7 @@ const PlacesScreen = () => {
       place: "Jakarta",
       placeImage:
         "https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/java/dki-jakarta/Image1.jpg",
-      shortDescription: "City in Indonesia",
+      shortDescription: "Jakarta Province, Indonesia",
       properties: [
         {
           id: "10",
@@ -33,9 +33,9 @@ const PlacesScreen = () => {
           image:
             "https://cf.bstatic.com/xdata/images/hotel/max1280x900/433845616.jpg?k=87bc315f35830189d9a1c935c3e167e648543c27f39ee4cafc5cf73ee24393b9&o=&hp=1",
           rating: 3.6,
-          address: "Jakarta Barat, 4,9 km dari pusat",
-          oldPrice: 328000,
-          newPrice: 157000,
+          address: "Jakarta Barat • 4,9 km dari pusat",
+          oldPrice: 370000,
+          newPrice: 180000,
           latitude: "-6.150875193897439",
           longitude: "106.81760239535717",
 
@@ -123,9 +123,9 @@ const PlacesScreen = () => {
             "https://cf.bstatic.com/xdata/images/hotel/max1280x900/223496641.jpg?k=070266558a879c2926e5511569c4828a007a3e1057b63ccfa30120c859341d1d&o=&hp=1",
           name: "Ashley Sabang Jakarta",
           rating: 4.2,
-          address: "Jakarta Pusat, 1,3 km dari pusat",
+          address: "Jakarta Pusat • 1,3 km dari pusat",
           oldPrice: 999000,
-          newPrice: 800000,
+          newPrice: 850000,
           latitude: "-6.184043601594098",
           longitude: "106.82467713686948",
 
@@ -212,9 +212,9 @@ const PlacesScreen = () => {
           id: "12",
           name: "Bobobox ITC Kuningan",
           rating: 4.2,
-          address: "Jakarta Selatan, 3 km dari pusat",
-          oldPrice: 386000,
-          newPrice: 347000,
+          address: "Jakarta Selatan • 3 km dari pusat",
+          oldPrice: 380000,
+          newPrice: 350000,
           latitude: "-6.223815815627502",
           longitude: "106.82638647144078",
 
@@ -305,16 +305,16 @@ const PlacesScreen = () => {
       properties: [
         {
           id: "10",
-          name: "FabHotel Zeke",
+          name: "Villa Coco Republic",
           image:
             "https://cf.bstatic.com/xdata/images/hotel/max1280x900/433845616.jpg?k=87bc315f35830189d9a1c935c3e167e648543c27f39ee4cafc5cf73ee24393b9&o=&hp=1",
           rating: 3.6,
-          address:
-            "346, Hennur Main Road, Post, Kalyan Nagar, 560043 Bangalore, India ",
-          oldPrice: 4600,
-          newPrice: 3312,
-          latitude: "13.0359",
-          longitude: "77.6431",
+          address: "Gili Air • 33 km dari pusat",
+          oldPrice: 610000,
+          newPrice: 470000,
+          latitude: "-8.35464140971046",
+          longitude: "116.08699060209025",
+
           photos: [
             {
               id: "100",
@@ -397,14 +397,13 @@ const PlacesScreen = () => {
           id: "11",
           image:
             "https://cf.bstatic.com/xdata/images/hotel/max1280x900/223496641.jpg?k=070266558a879c2926e5511569c4828a007a3e1057b63ccfa30120c859341d1d&o=&hp=1",
-          name: "Regenta Inn Indiranagar Bangalore",
+          name: "Mowies Gili Air",
           rating: 4,
-          address:
-            " 648/B, Regenta Inn Indiranagar, Binnamangala 1st stage Indiranagar, 560038 Bangalore, India",
-          oldPrice: 4201,
-          newPrice: 3327,
-          latitude: "12.9784",
-          longitude: "77.6408",
+          address: "Gili Air • 33 km dari pusat",
+          oldPrice: 999000,
+          newPrice: 810000,
+          latitude: "-8.363624700171778",
+          longitude: "116.07798933973537",
           photos: [
             {
               id: "110",
@@ -484,92 +483,6 @@ const PlacesScreen = () => {
             },
           ],
         },
-        {
-          id: "12",
-          name: "Bloom Hotel - Bengaluru Airport",
-          rating: 4.2,
-          address:
-            "Down Town Park, Sadahalli Gate, Kempegowda Int'l Airport Rd, 562157 Bangalore, India",
-          oldPrice: 3800,
-          newPrice: 3078,
-          latitude: "13.1989",
-          longitude: "77.7068",
-          image:
-            "https://cf.bstatic.com/xdata/images/hotel/max1280x900/430695517.jpg?k=c2559cc321dd56a7beb32262c84d60bc1760430a4a49ac6f8713a2fa03cd0d36&o=&hp=1",
-          photos: [
-            {
-              id: "120",
-              image:
-                "https://cf.bstatic.com/xdata/images/hotel/max1280x900/430695517.jpg?k=c2559cc321dd56a7beb32262c84d60bc1760430a4a49ac6f8713a2fa03cd0d36&o=&hp=1",
-            },
-            {
-              id: "121",
-              image:
-                "https://cf.bstatic.com/xdata/images/hotel/max1280x900/430695562.jpg?k=ca777d889f58838b1158a9e264b18d8f4ceff509a9fb89d345ef84151fd461b0&o=&hp=1",
-            },
-            {
-              id: "122",
-              image:
-                "https://cf.bstatic.com/xdata/images/hotel/max1280x900/430695518.jpg?k=240da3b294b015aa9268ba4bb8f09c9120bfabd6668ba55678fa5afda1582930&o=&hp=1",
-            },
-            {
-              id: "123",
-              image:
-                "https://cf.bstatic.com/xdata/images/hotel/max1280x900/430695521.jpg?k=99fffb6766013b84bc4780be3de5d7a73837062b99501f2cb3b039ebfb957d04&o=&hp=1",
-            },
-            {
-              id: "124",
-              image:
-                "https://cf.bstatic.com/xdata/images/hotel/max1280x900/430695792.jpg?k=c434efe348180f5a1a292b31432f46277bf5e43c7b85bce486665e3f424d0549&o=&hp=1",
-            },
-            {
-              id: "125",
-              image:
-                "https://cf.bstatic.com/xdata/images/hotel/max1280x900/430695791.jpg?k=ad248a728c71fffa384e1961e72b5a77462ab58da88c6f3074d5ff20ded68e51&o=&hp=1",
-            },
-            {
-              id: "126",
-              image:
-                "https://cf.bstatic.com/xdata/images/hotel/max1280x900/430695896.jpg?k=84734c40aaf7e6960b01e3eb931c24318119d61494ce05cf50831a88b10026cf&o=&hp=1",
-            },
-            {
-              id: "128",
-              image:
-                "https://cf.bstatic.com/xdata/images/hotel/max1280x900/430696362.jpg?k=41296a49d0c2f96dc4a72eddb9e42fc4b648408dcf5b1ceed2e73add6c5daf5d&o=&hp=1",
-            },
-            {
-              id: "129",
-              image:
-                "https://cf.bstatic.com/xdata/images/hotel/max1280x900/430696348.jpg?k=0a2f5bd39e71a59ae2554974021c8ef8540795758961baf3b48ee9a1b1548bd7&o=&hp=1",
-            },
-          ],
-          rooms: [
-            {
-              id: "202",
-              name: "King Room with Balcony",
-              size: 419,
-              refundable: "refundable",
-              payment: "Pay at the property",
-              bed: "1 queen bed",
-            },
-            {
-              id: "203",
-              name: "Deluxe king Room",
-              size: 440,
-              refundable: "non refundable",
-              payment: "Pay in advance",
-              bed: "1 queen bed",
-            },
-            {
-              id: "205",
-              name: "Deluxe king Room",
-              size: 490,
-              refundable: "refundable",
-              payment: "Pay at the property",
-              bed: "1 queen bed",
-            },
-          ],
-        },
       ],
     },
   ];
@@ -603,15 +516,15 @@ const PlacesScreen = () => {
       filter: "cost:High to Low",
     },
   ];
-  const [loading,setLoading] = useState(false);
-  const [items,setItems] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [items, setItems] = useState([]);
   useEffect(() => {
     if (items.length > 0) return;
 
     setLoading(true);
 
     const fetchProducts = async () => {
-      const colRef = collection(db,"places");
+      const colRef = collection(db, "places");
       const docsSnap = await getDocs(colRef);
       docsSnap.forEach((doc) => {
         items.push(doc.data());
@@ -685,7 +598,10 @@ const PlacesScreen = () => {
           </Text>
         </Pressable>
 
-        <Pressable style={{ flexDirection: "row", alignItems: "center" }}>
+        <Pressable
+          onPress={() => setModalVisibile(!modalVisibile)}
+          style={{ flexDirection: "row", alignItems: "center" }}
+        >
           <Ionicons name="filter" size={22} color="gray" />
           <Text style={{ fontSize: 15, fontWeight: "500", marginLeft: 8 }}>
             Filter

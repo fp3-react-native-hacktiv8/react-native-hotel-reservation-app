@@ -49,6 +49,20 @@ const UserScreen = () => {
         { cancelable: false }
       );
     }
+    // Validation for email format
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      Alert.alert("Invalid Email", "Please enter a valid email address.");
+      return;
+    }
+
+    // Validation for phone number format
+    if (!/^\d+$/.test(phoneNo)) {
+      Alert.alert(
+        "Invalid Phone Number",
+        "Phone number must contain only digits."
+      );
+      return;
+    }
     if (firstName && lastName && email && phoneNo) {
       navigation.navigate("Confirmation", {
         oldPrice: route.params.oldPrice,
@@ -111,6 +125,7 @@ const UserScreen = () => {
               borderWidth: 1,
               fontSize: 17,
             }}
+            placeholder="Email"
           />
         </View>
 
@@ -125,6 +140,7 @@ const UserScreen = () => {
               borderWidth: 1,
               fontSize: 17,
             }}
+            placeholder="+62"
           />
         </View>
       </View>
@@ -132,11 +148,10 @@ const UserScreen = () => {
       <Pressable
         style={{
           backgroundColor: "white",
-          marginTop: "auto",
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-          marginBottom: 40,
+          marginTop: "auto",
           padding: 10,
         }}
       >
@@ -145,7 +160,6 @@ const UserScreen = () => {
             style={{
               flexDirection: "row",
               alignItems: "center",
-
               marginTop: 4,
               gap: 8,
             }}
