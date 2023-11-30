@@ -3,7 +3,7 @@ import React, { useLayoutEffect } from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useDispatch } from "react-redux";
-import { savedPlaces } from "../SavedReducer";
+import { savedPlaces } from "../redux/savedReducer/SavedReducer";
 import { setDoc,doc } from "firebase/firestore";
 import { auth, db } from "../firebase";
 
